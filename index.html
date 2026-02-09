@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="music-toggle" class="icon-btn hidden" aria-label="Toggle Music">🎵</button>
+
+    <button id="customize-btn" class="settings-trigger">⚙️ Customize</button>
+
+    <main class="container">
+        <div class="card" id="main-card">
+            
+            <div class="visual-area">
+                <svg id="teddy-default" class="teddy-svg" viewBox="0 0 200 200">
+                    <circle cx="100" cy="110" r="60" fill="#8d5524" /> <circle cx="70" cy="60" r="25" fill="#8d5524" /> <circle cx="130" cy="60" r="25" fill="#8d5524" /> <circle cx="85" cy="100" r="5" fill="#000" /> <circle cx="115" cy="100" r="5" fill="#000" /> <ellipse cx="100" cy="120" rx="20" ry="15" fill="#e0ac69" /> <circle cx="100" cy="115" r="5" fill="#000" /> <path d="M 100 120 L 100 130" stroke="#000" stroke-width="2" /> <path d="M 90 130 Q 100 140 110 130" stroke="#000" stroke-width="2" fill="none" /> </svg>
+
+                <svg id="teddy-success" class="teddy-svg hidden" viewBox="0 0 200 200">
+                    <circle cx="100" cy="110" r="60" fill="#8d5524" />
+                    <circle cx="70" cy="60" r="25" fill="#8d5524" />
+                    <circle cx="130" cy="60" r="25" fill="#8d5524" />
+                    <circle cx="85" cy="100" r="5" fill="#000" />
+                    <circle cx="115" cy="100" r="5" fill="#000" />
+                    <ellipse cx="100" cy="120" rx="20" ry="15" fill="#e0ac69" />
+                    <circle cx="100" cy="115" r="5" fill="#000" />
+                    <path d="M 80 125 Q 100 150 120 125" stroke="#000" stroke-width="3" fill="#e0ac69" /> <circle cx="50" cy="100" r="15" fill="#8d5524" />
+                    <circle cx="150" cy="100" r="15" fill="#8d5524" />
+                </svg>
+
+                <img id="custom-image" class="custom-img hidden" alt="Custom Valentine Image">
+            </div>
+
+            <div class="text-area">
+                <h1 id="main-heading">Will you be my Valentine?</h1>
+                <p id="sub-message">I have a question for you...</p>
+                
+                <div class="actions">
+                    <button id="btn-yes" class="btn primary">Yes! ♥</button>
+                    <button id="btn-no" class="btn secondary">No</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modal-heading">Yay!</h2>
+            <p id="modal-body">Best day ever!</p>
+            <button id="btn-close-modal" class="btn secondary-sm">Close</button>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="admin-panel hidden">
+        <div class="admin-header">
+            <h3>💌 Customize Page</h3>
+            <button id="close-admin">×</button>
+        </div>
+        <div class="admin-body">
+            
+            <div class="form-group">
+                <label>Theme Color</label>
+                <div class="color-options">
+                    <button class="color-swatch" style="background:#FFB6C1" data-theme="pink"></button>
+                    <button class="color-swatch" style="background:#C23B59" data-theme="rose"></button>
+                    <button class="color-swatch" style="background:#2C3E50" data-theme="dark"></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Recipient Name</label>
+                <input type="text" id="input-recipient" placeholder="e.g. Sarah">
+            </div>
+
+            <div class="form-group">
+                <label>Main Question</label>
+                <input type="text" id="input-question" value="Will you be my Valentine?">
+            </div>
+
+            <div class="form-group">
+                <label>Sub-text</label>
+                <textarea id="input-message" rows="2">I have a question for you...</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Custom Image URL (Optional)</label>
+                <input type="text" id="input-image" placeholder="https://example.com/photo.jpg">
+                <small>Leave empty to use the Teddy Bear.</small>
+            </div>
+
+            <div class="form-group">
+                <label>Background Music URL (Optional)</label>
+                <input type="text" id="input-music" placeholder="https://example.com/song.mp3">
+            </div>
+
+            <div class="form-group">
+                <label>Success Message</label>
+                <input type="text" id="input-success-msg" value="I'm so happy!">
+            </div>
+
+            <hr>
+            
+            <div class="form-group">
+                <button id="btn-generate-link" class="btn primary full-width">🔗 Copy Shareable Link</button>
+                <p id="copy-feedback" class="feedback"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
